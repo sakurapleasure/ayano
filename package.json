@@ -1,0 +1,31 @@
+{
+  "name": "ayano",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Petitsurume/ayano.git"
+  },
+  "author": "Petitsurume",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Petitsurume/ayano/issues"
+  },
+  "homepage": "https://github.com/Petitsurume/ayano#readme",
+  "dependencies": {
+    "@types/express": "^4.0.34",
+    "@types/express-session": "0.0.32",
+    "@types/mongoose": "^4.7.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.3",
+    "mongoose": "^4.7.5",
+    "rimraf": "^2.5.4",
+    "typescript": "^2.1.4"
+  }
+}
