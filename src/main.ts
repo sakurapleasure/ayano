@@ -12,8 +12,10 @@ app.locals.config = {
     style_type:"bootstrap3",
     site_lang:"jp"
 }
-app.get("/",function(req,res) {
-    models.posts.find()
-    res.render("top")
+app.get("/",async function(req,res) {   
+    const posts = await models.posts.find().sort("-createdAt")
+    res.render("top",{
+        posts
+    })
 })
 app.listen(process.env.PORT || 3000)
