@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        block cdn
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js",async)
+            case config.style_type
+                when "bootstrap3"
+                    link(rel="stylesheet",href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css")
+                    script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js")
+                when "honoka"
+                    link(rel="stylesheet",href="http://cdn.honokak.osaka/honoka/3.3.7-a/css/bootstrap.min.css")
+                    script(src="http://cdn.honokak.osaka/honoka/3.3.7-a/js/bootstrap.min.js")
+        block head
+    body
+        nav.navbar.navbar-default
+            .container
+                .navbar-header
+                    a.navbar-brand(href="/")= config.blog_name
+                    button(type="button",data-toggle="collapse",data-target="#header_collapsed",aria-expanded="false").navbar-toggle.collapsed
+                        span.sr-only toggle
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                .collapse.nav-bar-collapse#header_collapsed
+                    ul.nav.navbar-nav
+                        li: a(href="/") hoge
+        .container
+            block content
