@@ -1,0 +1,5 @@
+extends ./base
+include ./article
+
+block content
+    +article({title:"hoge",content:"text",url:"/hoge",createdAt:new Date()})

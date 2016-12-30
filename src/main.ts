@@ -10,6 +10,6 @@ app.locals.config = {
     style_type:"bootstrap3"
 }
 app.get("/",function(req,res) {
-    res.render("main")
+    res.render("top")
 })
 app.listen(process.env.PORT || 3000)

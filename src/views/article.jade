@@ -1,0 +1,13 @@
+mixin article(post,readmore = true)
+    article.panel.panel-default
+        .panel-body
+            h1= post.title
+            .well.well-sm
+                span.glyphicon.glyphicon-time
+                time(datetime=post.createdAt)= post.createdAt
+            != post.content
+            if readmore
+                br
+                a(href=post.url).btn.btn-default Read More
+            else
+                != post.content_after
