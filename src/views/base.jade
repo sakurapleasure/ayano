@@ -1,9 +1,10 @@
 doctype html
-html
+html(lang=config.site_lang)
     head
         meta(charset="UTF-8")
         meta(name="generator",content="ayano")
         // Ayano (open source blog engine) https://github.com/petitsurume/ayano 
+        meta(http-equiv="X-UA-Compatible",content="IE=Edge")
         block cdn
             script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js",async)
             case config.style_type
