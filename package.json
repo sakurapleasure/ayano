@@ -33,6 +33,7 @@
     "multer": "^1.2.1",
     "readline-sync": "^1.4.5",
     "rimraf": "^2.5.4",
+    "rndstr": "^1.0.0",
     "typescript": "^2.1.4"
   }
 }
