@@ -18,4 +18,15 @@ app.get("/",async function(req,res) {
         posts
     })
 })
+app.get("/category/:category",async function(req,res,next){
+    const category = await models.categories.findOne({slug:req.params.category})
+    if(!category) return next()
+    const posts = await models.posts.find().sort("-createdAt")
+    res.render("category",{
+        posts
+    })
+})
+app.use(function(req,res){ // 404
+    res.status(404).render("notfound")
+})
 app.listen(process.env.PORT || 3000)
