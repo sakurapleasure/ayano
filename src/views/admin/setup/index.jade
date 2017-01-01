@@ -1,0 +1,42 @@
+extends ./base
+
+block content
+    h1 セットアップ
+    p 必要事項を入力してください。
+    strong セットアップはGoogle Chrome、またはFirefoxで行うことを強く推奨します。
+    p すべての項目はあとから変更できます。
+    hr
+    form(method="POST",action="/setup/register")
+        .form-group
+            label ブログ名
+            input.form-control(type="text",name="blog_name",placeholder="My Blog",required)
+        hr
+        .form-group
+            label HTTPSの利用について
+            select.form-control(name="https")
+                option(value="no") 利用しない
+                option(value="only-admin") 管理/ログイン画面のみ
+                option(value="yes") 常に使用
+            p.help-block HTTPSはSEO対策にもなり、利用者のプライバシーも保護できますが、レンタルサーバーなどでは対応していない場合があります。また、広告の一部にもHTTPSに対応していないものがあります。 
+            script.
+                $(function(){
+                    // HTTPSでアクセスされていたら最初からHTTPSを有効にする
+                    if(location.protocol === "https:") $("[name=https]").val("yes")
+                })
+        hr
+        .form-group
+            label スタイル
+            select.form-control(name="style_type")
+                option(value="bootstrap3") Bootstrap
+                option(value="honoka") Honoka (Bootstrap テーマ)
+        hr
+        .form-group
+            label あなたの表示名
+            input.form-control(type="text",name="user_name",required)
+        .form-group
+            label 管理者アカウントのログイン名
+            input.form-control(type="text",name="user_screen_name",required)
+        .form-group
+            label パスワード
+            input.form-control(type="password",name="password",autocomplete="new-password",required)
+        input.btn.btn-primary(type="submit",value="設定")

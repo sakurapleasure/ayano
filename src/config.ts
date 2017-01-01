@@ -1,6 +1,7 @@
 import readline = require("readline-sync")
 import fs = require("fs")
 import rndstr from "rndstr"
+import crypto = require("crypto")
 
 const schemas = [
     {
@@ -12,6 +13,11 @@ const schemas = [
         name: "secret_key",
         type: "random",
         question_text: false
+    },
+    {
+        name: "init_password",
+        type: "secure_password",
+        question_text: "初期設定用パスワードを入力してください（他のサービスなどのパスワードは利用しないでください）",
     }
 ]
 
@@ -34,8 +40,14 @@ schemas.forEach(function(schema){
         return
     }
     console.log(schema.name)
-    var answer = readline.question(schema.question_text+" > ")
+    var answer
+    var answer = readline.question(schema.question_text+" > ",{
+        hideEchoBack: schema.type === "secure_password"
+    })
     config[schema.name] = answer
+    if(schema.type === "secure_password") {
+        config[schema.name] = crypto.createHash("sha512").update(config["secret_key"]+answer).digest("hex")
+    }
     updateFlag = true
 })
 if(updateFlag) { // 変更したなら
