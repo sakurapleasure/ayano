@@ -27,11 +27,12 @@ app.locals.config = {
     is_config_load_end: false,
     is_setup_end: false,
 }
+// config load
 models.configs.find().then(function(configs){
-    app.locals.config.is_config_load_end = true
     configs.forEach(function(config){
         app.locals.config[config.name] = config.content
     })
+    app.locals.config.is_config_load_end = true
 })
 app.use(function(req,res,next){
     if(!app.locals.config.is_config_load_end){
@@ -40,6 +41,7 @@ app.use(function(req,res,next){
     }
     next()
 })
+
 app.get("/",async function(req,res) {
     if(!app.locals.config.is_setup_end)
         return res.redirect("/setup")
