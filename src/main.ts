@@ -5,6 +5,7 @@ import config = require("./config")
 import models = require("./models")
 import session = require("express-session")
 import setup_controller from "./controllers/setup"
+import login_controller from "./controllers/login"
 
 const app = express()
 app.set("view engine","jade")
@@ -62,6 +63,7 @@ app.get("/category/:category",async function(req,res,next){
 // load controllers
 
 setup_controller(app)
+login_controller(app)
 
 
 app.use(function(req,res){ // 404

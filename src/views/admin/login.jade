@@ -1,0 +1,12 @@
+extends ./setup/base
+
+block content
+    h1 ログイン
+    form(method="POST")
+        .form-group
+            label ユーザー名
+            input.form-control(type="text",name="screen_name")
+        .form-group
+            label パスワード
+            input.form-control(type="password",name="password")
+        input.btn.btn-primary(type="submit",value="ログイン")

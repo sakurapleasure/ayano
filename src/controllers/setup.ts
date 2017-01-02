@@ -4,7 +4,7 @@ import crypto = require("crypto")
 import setConfig from "../utils/setConfig"
 export default function (app) {
     app.get("/setup",function(req,res){
-        if(config["is_setup_end"])
+        if(app.locals.config["is_setup_end"])
             return res.render("admin/setup/already")
         if(req.session["setup_auth"])
             res.render("admin/setup/index")
@@ -12,7 +12,7 @@ export default function (app) {
             res.render("admin/setup/auth")
     })
     app.post("/setup",function(req,res){
-        if(config["is_setup_end"])
+        if(app.locals.config["is_setup_end"])
             return res.render("admin/setup/already")
         const inputPasswordHash = crypto.createHash("sha512").update(config["secret_key"]+req.body.password).digest("hex")
         if(config["init_password"] != inputPasswordHash){
