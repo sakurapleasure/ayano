@@ -1,0 +1,10 @@
+extends ./base
+
+block content
+    h1 セットアップ - 認証
+    p ターミナルでセットしたパスワードを入力してください。
+    strong セットアップはGoogle Chrome、またはFirefoxで行うことを強く推奨します。
+    form(method="POST",action="/setup")
+        .form-group
+            input.form-control(type="password",name="password")
+    input.btn.btn-primary(type="submit",value="セットアップ開始")
